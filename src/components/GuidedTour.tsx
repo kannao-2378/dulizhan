@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Plus, X, Check } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
-import { images } from '@/config/images'
+import { images, videos } from '@/config/images'
 import { cn } from '@/lib/utils'
 
 const features = [
   {
     name: 'ComfortMax™ Saddle',
+    video: videos.comfort.breathableSaddle,
     description: 'Our most comfortable saddle ever, designed with dual-density foam and a widened profile for lasting comfort on every ride.',
     bulletPoints: [
       '230mm widened saddle for broader support',
@@ -16,7 +17,8 @@ const features = [
     ],
   },
   {
-    name: 'Adjustable Air Suspension',
+    name: 'Air Suspension',
+    video: videos.comfort.airSuspension,
     description: 'Fine-tune your ride with adjustable air suspension that absorbs bumps and vibrations for a smoother journey.',
     bulletPoints: [
       'Adjustable air pressure for rider weight',
@@ -27,6 +29,7 @@ const features = [
   },
   {
     name: 'Breathable Saddle',
+    video: videos.comfort.breathableSaddle,
     description: 'Engineered with ventilation channels to keep you cool and comfortable, even on warm-weather rides.',
     bulletPoints: [
       'Strategic ventilation channels',
@@ -37,6 +40,7 @@ const features = [
   },
   {
     name: 'Suspension Seatpost',
+    video: videos.comfort.suspensionSeatpost,
     description: 'Absorb shocks and vibrations from the road with a suspension seatpost that adds an extra layer of comfort.',
     bulletPoints: [
       'Up to 35mm travel',
@@ -57,9 +61,17 @@ const hotspotPositions = [
 export default function GuidedTour() {
   const [activeFeature, setActiveFeature] = useState(0)
   const [detailOpen, setDetailOpen] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const { ref, isVisible } = useScrollAnimation(0.1)
 
   const active = features[activeFeature]
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load()
+      videoRef.current.play().catch(() => {})
+    }
+  }, [activeFeature])
 
   const selectFeature = (index: number) => {
     setActiveFeature(index)
@@ -91,9 +103,14 @@ export default function GuidedTour() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           )}
         >
-          <img
-            src={images.hero.main[0]}
-            alt="Velotric Discover 3"
+          <video
+            ref={videoRef}
+            key={active.video}
+            src={active.video}
+            loop
+            muted
+            playsInline
+            autoPlay
             className="w-full h-full object-cover"
           />
 

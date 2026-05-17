@@ -1,27 +1,20 @@
-import { ShieldCheck, Droplets, CreditCard } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { images } from '@/config/images'
 import { cn } from '@/lib/utils'
-import type { LucideIcon } from 'lucide-react'
 
-interface SafetyFeature {
-  icon: LucideIcon
-  title: string
-  description: string
-}
-
-const safetyFeatures: SafetyFeature[] = [
+const safetyFeatures = [
   {
-    icon: ShieldCheck,
+    image: images.safety.ulCert,
     title: 'UL2271 & UL2849 Certified',
     description: 'Rigorously tested for battery and electrical system safety.',
   },
   {
-    icon: Droplets,
+    image: images.safety.waterproof,
     title: 'IPX7 Battery, IPX6 Frame',
     description: 'Ride with confidence in rain and wet conditions.',
   },
   {
-    icon: CreditCard,
+    image: images.safety.nfc,
     title: 'NFC Key Card Unlock',
     description: 'Tap to unlock with a simple card—no keys needed.',
   },
@@ -47,16 +40,19 @@ export default function SafetySection() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {safetyFeatures.map((feature) => {
-            const Icon = feature.icon
-            return (
-              <div
-                key={feature.title}
-                className="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-blue/10 text-brand-blue mb-5">
-                  <Icon className="w-7 h-7" strokeWidth={1.8} />
-                </div>
+          {safetyFeatures.map((feature) => (
+            <div
+              key={feature.title}
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+            >
+              <div className="aspect-[4/3] w-full bg-gray-100">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
                 <h3 className="text-lg font-bold text-brand-dark mb-2">
                   {feature.title}
                 </h3>
@@ -64,8 +60,8 @@ export default function SafetySection() {
                   {feature.description}
                 </p>
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

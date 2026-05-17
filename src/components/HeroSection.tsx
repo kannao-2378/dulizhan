@@ -1,16 +1,5 @@
 import { useState } from "react";
-import {
-  Star,
-  Truck,
-  Shield,
-  RotateCcw,
-  Battery,
-  Gauge,
-  Zap,
-  Bike,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Star, Truck, Shield, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
 import { images } from "@/config/images";
 
 const galleryImages = images.hero.main;
@@ -24,12 +13,12 @@ const colors = [
 ];
 
 const specs = [
-  { icon: Gauge, label: "Max Range", value: "80 Miles" },
-  { icon: Zap, label: "Top Speed", value: "28 MPH" },
-  { icon: Bike, label: "SensorSwap™", value: "Torque/Cadence" },
-  { icon: Battery, label: "Battery", value: "730 Wh" },
-  { icon: Zap, label: "Motor", value: "750W/75Nm" },
-  { icon: Gauge, label: "Pedal Assist Mode", value: "5 Modes" },
+  { icon: images.icons.range, label: "Max Range", value: "80 Miles" },
+  { icon: images.icons.speed, label: "Top Speed", value: "28 MPH" },
+  { icon: images.icons.sensor, label: "SensorSwap™", value: "Torque/Cadence" },
+  { icon: images.icons.battery, label: "Battery", value: "730 Wh" },
+  { icon: images.icons.motor, label: "Motor", value: "750W/75Nm" },
+  { icon: images.icons.assist, label: "Pedal Assist Mode", value: "5 Modes" },
 ];
 
 export default function HeroSection() {
@@ -44,7 +33,7 @@ export default function HeroSection() {
     setTimeout(() => {
       setActiveIdx(idx);
       setFade(true);
-    }, 150);
+    }, 200);
   };
 
   const prev = () => changeImage((activeIdx - 1 + totalImages) % totalImages);
@@ -53,16 +42,18 @@ export default function HeroSection() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-8 lg:px-8 lg:py-12">
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-        {/* LEFT — Image Gallery */}
         <div className="flex flex-col gap-3">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-50">
-            <img
-              src={galleryImages[activeIdx]}
-              alt={`Discover 3 view ${activeIdx + 1}`}
-              className={`h-full w-full object-contain transition-opacity duration-300 ${
-                fade ? "opacity-100" : "opacity-0"
-              }`}
-            />
+            {galleryImages.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`Discover 3 view ${i + 1}`}
+                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ${
+                  i === activeIdx && fade ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
             <span className="absolute bottom-3 right-3 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white">
               {activeIdx + 1} / {totalImages}
             </span>
@@ -106,7 +97,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT — Product Info */}
         <div className="flex flex-col gap-5">
           <p className="text-sm font-medium uppercase tracking-wider text-gray-500">
             Ultimate Comfort Commuter Ebike
@@ -136,7 +126,6 @@ export default function HeroSection() {
             Pay over time with <span className="font-medium text-gray-700">Affirm</span>
           </p>
 
-          {/* Size Selector */}
           <div>
             <p className="mb-2 text-sm font-semibold text-gray-900">Size</p>
             <div className="flex gap-2">
@@ -159,7 +148,6 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Color Selector */}
           <div>
             <p className="mb-2 text-sm font-semibold text-gray-900">
               Color — <span className="font-normal text-gray-500">{colors[selectedColor].name}</span>
@@ -179,14 +167,13 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Specs Grid */}
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {specs.map((s) => (
               <div
                 key={s.label}
                 className="flex flex-col items-start rounded-xl bg-gray-50 p-3"
               >
-                <s.icon size={18} className="mb-1 text-gray-500" />
+                <img src={s.icon} alt={s.label} className="mb-1 h-[18px] w-[18px]" />
                 <span className="text-xs text-gray-500">{s.label}</span>
                 <span className="text-sm font-semibold text-gray-900">{s.value}</span>
               </div>
@@ -197,7 +184,6 @@ export default function HeroSection() {
             Learn about More Features
           </a>
 
-          {/* Trust Badges */}
           <div className="flex flex-wrap gap-4 text-xs text-gray-600">
             <span className="flex items-center gap-1.5">
               <Truck size={14} /> Free Shipping
@@ -210,8 +196,7 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* CTA Buttons */}
-          <button className="w-full rounded-full bg-gray-900 py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800">
+          <button className="w-full rounded-full bg-black py-3.5 text-sm font-semibold text-white transition hover:bg-gray-800">
             Buy Now
           </button>
           <button className="w-full rounded-full border border-gray-900 py-3.5 text-sm font-semibold text-gray-900 transition hover:bg-gray-50">

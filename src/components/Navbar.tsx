@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Search, User, ShoppingCart, Menu, X } from "lucide-react";
+import { images } from "@/config/images";
 
 const navLinks = ["Ebike", "Accessories", "About", "Support"];
 
@@ -20,9 +21,9 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
-        <span className="text-xl font-bold tracking-wide text-gray-900">
-          VELOTRIC
-        </span>
+        <a href="#">
+          <img src={images.logo} alt="Velotric" className="h-7" />
+        </a>
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (

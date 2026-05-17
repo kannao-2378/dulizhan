@@ -1,13 +1,14 @@
-import { Star, Play, Quote } from 'lucide-react'
+import { useState } from 'react'
+import { Star, Play, X, Quote } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
-import { images } from '@/config/images'
+import { images, videos } from '@/config/images'
 import { cn } from '@/lib/utils'
 
 const experts = [
   {
     image: images.experts.ebr,
     quote:
-      'If you think comfort bikes can\'t perform, then think again. The Velotric Discover 3 mixes cruiser comfort with commuter speed, throws in two forms of suspension, and has a motor that moves with you or for you.',
+      "If you think comfort bikes can't perform, then think again. The Velotric Discover 3 mixes cruiser comfort with commuter speed, throws in two forms of suspension, and has a motor that moves with you or for you.",
     source: 'Electric Bike Review',
   },
   {
@@ -19,11 +20,42 @@ const experts = [
 ]
 
 export default function ExpertReviews() {
-  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation(0.1)
+  const [modalOpen, setModalOpen] = useState(false)
   const { ref: bannerRef, isVisible: bannerVisible } = useScrollAnimation(0.15)
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation(0.1)
 
   return (
     <section className="bg-white text-gray-900">
+      <div
+        ref={bannerRef}
+        className={cn(
+          'relative flex flex-col items-center justify-center overflow-hidden bg-gray-900 transition-all duration-700',
+          bannerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        )}
+      >
+        <video
+          src={videos.experts.review}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex flex-col items-center px-6 py-28">
+          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+            Comfort You Can Feel
+          </h2>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="mt-8 flex items-center gap-2 rounded-full bg-white/15 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm ring-1 ring-white/30 transition hover:bg-white/25 hover:ring-white/50"
+          >
+            <Play className="h-4 w-4 fill-white text-white" />
+            Watch Video
+          </button>
+        </div>
+      </div>
+
       <div
         ref={cardsRef}
         className={cn(
@@ -34,9 +66,6 @@ export default function ExpertReviews() {
         <h2 className="text-center text-4xl font-bold tracking-tight md:text-5xl">
           Hear from the Experts
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-gray-500">
-          Trusted voices in the ebike community share their take on the Discover 3.
-        </p>
 
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           {experts.map((expert, i) => (
@@ -46,7 +75,7 @@ export default function ExpertReviews() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="flex flex-col sm:flex-row">
-                <div className="h-48 w-full shrink-0 sm:h-auto sm:w-44">
+                <div className="h-48 w-full shrink-0 sm:h-auto sm:w-48">
                   <img
                     src={expert.image}
                     alt={expert.source}
@@ -56,14 +85,14 @@ export default function ExpertReviews() {
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div className="relative">
                     <Quote
-                      className="absolute -left-1 -top-1 h-8 w-8 text-blue-100"
-                      strokeWidth={1.5}
+                      className="absolute -left-2 -top-2 h-12 w-12 text-blue-100"
+                      strokeWidth={1}
                     />
-                    <p className="relative pl-6 text-base leading-relaxed text-gray-700 italic">
+                    <p className="relative pl-8 text-base leading-relaxed text-gray-700 italic">
                       {expert.quote}
                     </p>
                   </div>
-                  <div className="mt-5 flex flex-col gap-3">
+                  <div className="mt-6 flex flex-col gap-3">
                     <div className="flex items-center gap-1">
                       {Array.from({ length: 5 }).map((_, j) => (
                         <Star
@@ -72,14 +101,15 @@ export default function ExpertReviews() {
                         />
                       ))}
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={images.experts.logo}
+                        alt=""
+                        className="h-6 w-auto object-contain"
+                      />
                       <span className="text-sm font-semibold text-gray-900">
                         {expert.source}
                       </span>
-                      <button className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 transition hover:border-gray-300 hover:bg-gray-50">
-                        <Play className="h-3.5 w-3.5 fill-gray-700" />
-                        Watch Video
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -89,21 +119,24 @@ export default function ExpertReviews() {
         </div>
       </div>
 
-      <div
-        ref={bannerRef}
-        className={cn(
-          'relative flex flex-col items-center justify-center overflow-hidden bg-gray-900 px-6 py-24 transition-all duration-700',
-          bannerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        )}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-900/70" />
-        <button className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm ring-2 ring-white/30 transition hover:bg-white/20 hover:ring-white/50">
-          <Play className="h-8 w-8 fill-white text-white" />
-        </button>
-        <p className="relative z-10 mt-6 text-xl font-semibold text-white">
-          Watch the Full Review
-        </p>
-      </div>
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="relative w-full max-w-4xl mx-4">
+            <button
+              onClick={() => setModalOpen(false)}
+              className="absolute -top-12 right-0 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <video
+              src={videos.experts.review}
+              autoPlay
+              controls
+              className="w-full rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
