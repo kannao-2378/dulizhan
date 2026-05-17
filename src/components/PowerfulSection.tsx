@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react'
 import { Zap, Battery, Gauge } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { useCountUp } from '@/hooks/useCountUp'
@@ -39,28 +40,45 @@ function StatCard({
 }
 
 export default function PowerfulSection() {
-  const { ref: videoRef, isVisible: videoVisible } = useScrollAnimation(0.2)
+  const [videoSrc, setVideoSrc] = useState('')
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const { ref: videoSectionRef, isVisible: videoVisible } = useScrollAnimation(0.2)
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation(0.2)
   const { ref: rangeRef, isVisible: rangeVisible } = useScrollAnimation(0.2)
   const rangeCount = useCountUp(80, 2200, 0, rangeVisible)
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoSrc(videos.powerful.motor)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px' }
+    )
+    if (videoRef.current) observer.observe(videoRef.current)
+    return () => observer.disconnect()
+  }, [videos.powerful.motor])
+
   return (
     <section className="bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white">
       <div
-        ref={videoRef}
+        ref={videoSectionRef}
         className={`relative mx-auto max-w-7xl px-6 pt-24 transition-all duration-700 ${videoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <div className="overflow-hidden rounded-3xl">
           <video
+            ref={videoRef}
+            src={videoSrc}
             muted
             playsInline
             autoPlay
             loop
+            preload="none"
             poster={images.powerful.range}
             className="h-[480px] w-full object-cover md:h-[560px]"
-          >
-            <source src={videos.powerful.motor} type="video/mp4" />
-          </video>
+          />
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40">
             <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
               Powerful On Everyday Hills
@@ -122,6 +140,7 @@ export default function PowerfulSection() {
               <img
                 src={images.powerful.range}
                 alt="Velotric Discover 3 range"
+                loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
               />
             </div>

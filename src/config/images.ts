@@ -3,7 +3,7 @@ export const images = {
     main: [
       "./assets/images/D3_Lemans_Blue_right_side_1_1.png",
       "./assets/images/NFC_Card_Unlock.png",
-      "./assets/images/long_range_commuter_ebike.png",
+      "./assets/images/long_range_commuter_ebike.webp",
       "./assets/images/80_mile_range.webp",
       "./assets/images/ul_2849_certified_safety.webp",
       "./assets/images/kenda_tires_traction.webp",
@@ -26,15 +26,15 @@ export const images = {
     sensor: "./assets/images/torque_cadence_sensor_riding.webp",
   },
   powerful: {
-    range: "./assets/images/80_mile_range.webp",
+    range: "./assets/images/long_range_commuter_ebike.webp",
   },
   terrain: {
     paved: "./assets/images/paved_roads.webp",
     pavedMobile: "./assets/images/paved_roads_mo.webp",
-    climbing: "./assets/images/paved_roads.webp",
-    climbingMobile: "./assets/images/paved_roads_mo.webp",
-    gravel: "./assets/images/paved_roads.webp",
-    gravelMobile: "./assets/images/paved_roads_mo.webp",
+    climbing: "./assets/images/hilly_climb.webp",
+    climbingMobile: "./assets/images/hilly_climb_mo.webp",
+    gravel: "./assets/images/gravel_trails.webp",
+    gravelMobile: "./assets/images/gravel_trails_mo.webp",
   },
   safety: {
     ulCert: "./assets/images/ul_2849_certified_safety.webp",

@@ -48,6 +48,8 @@ export default function TerrainSection() {
               <img
                 src={card.image}
                 alt={card.label}
+                loading="lazy"
+                decoding="async"
                 className={cn(
                   'absolute inset-0 w-full h-full object-cover',
                   'transition-transform duration-500 ease-out',

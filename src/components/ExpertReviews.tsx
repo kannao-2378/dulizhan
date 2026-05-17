@@ -39,6 +39,7 @@ export default function ExpertReviews() {
           loop
           muted
           playsInline
+          preload="none"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50" />
@@ -79,6 +80,7 @@ export default function ExpertReviews() {
                   <img
                     src={expert.image}
                     alt={expert.source}
+                    loading="lazy"
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -105,6 +107,7 @@ export default function ExpertReviews() {
                       <img
                         src={images.experts.logo}
                         alt=""
+                        loading="lazy"
                         className="h-6 w-auto object-contain"
                       />
                       <span className="text-sm font-semibold text-gray-900">
@@ -132,6 +135,7 @@ export default function ExpertReviews() {
               src={videos.experts.review}
               autoPlay
               controls
+              preload="none"
               className="w-full rounded-lg"
             />
           </div>

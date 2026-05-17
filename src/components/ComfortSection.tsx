@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Star, Check, Play } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { images, videos } from '@/config/images'
@@ -31,11 +31,27 @@ const saddleGens = [
 
 export default function ComfortSection() {
   const [activeTab, setActiveTab] = useState(0)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
   const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation(0.15)
   const { ref: videoRef, isVisible: videoVisible } = useScrollAnimation(0.15)
   const { ref: evoRef, isVisible: evoVisible } = useScrollAnimation(0.15)
   const { ref: quoteRef, isVisible: quoteVisible } = useScrollAnimation(0.2)
   const { ref: sensorRef, isVisible: sensorVisible } = useScrollAnimation(0.15)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoLoaded(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px' }
+    )
+    if (videoContainerRef.current) observer.observe(videoContainerRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="bg-white text-gray-900">
@@ -91,23 +107,25 @@ export default function ComfortSection() {
           ))}
         </div>
 
-        <div className="relative mt-8 overflow-hidden rounded-2xl bg-gray-100 aspect-video">
+        <div ref={videoContainerRef} className="relative mt-8 overflow-hidden rounded-2xl bg-gray-100 aspect-video">
           <video
             key={`desktop-${activeTab}`}
-            src={videoTabs[activeTab].src}
+            src={videoLoaded ? videoTabs[activeTab].src : undefined}
             muted
             playsInline
             autoPlay
             loop
+            preload="none"
             className="absolute inset-0 h-full w-full object-cover hidden md:block"
           />
           <video
             key={`mobile-${activeTab}`}
-            src={videoTabs[activeTab].mobileSrc}
+            src={videoLoaded ? videoTabs[activeTab].mobileSrc : undefined}
             muted
             playsInline
             autoPlay
             loop
+            preload="none"
             className="absolute inset-0 h-full w-full object-cover block md:hidden"
           />
         </div>
@@ -167,6 +185,7 @@ export default function ComfortSection() {
                 <img
                   src={s.image}
                   alt={s.label}
+                  loading="lazy"
                   className="h-44 w-full rounded-xl object-cover"
                 />
                 <h5 className="mt-4 text-lg font-semibold">{s.label}</h5>
@@ -203,6 +222,7 @@ export default function ComfortSection() {
         <img
           src={images.comfort.sensor}
           alt="SensorSwap torque cadence sensor"
+          loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20" />

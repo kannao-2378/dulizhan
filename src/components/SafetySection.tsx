@@ -49,6 +49,7 @@ export default function SafetySection() {
                 <img
                   src={feature.image}
                   alt={feature.title}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>

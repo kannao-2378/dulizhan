@@ -49,6 +49,7 @@ export default function HeroSection() {
                 key={i}
                 src={src}
                 alt={`Discover 3 view ${i + 1}`}
+                decoding="async"
                 className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ${
                   i === activeIdx && fade ? "opacity-100" : "opacity-0"
                 }`}
@@ -90,6 +91,8 @@ export default function HeroSection() {
                 <img
                   src={src}
                   alt={`Thumbnail ${i + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover"
                 />
               </button>
@@ -173,7 +176,7 @@ export default function HeroSection() {
                 key={s.label}
                 className="flex flex-col items-start rounded-xl bg-gray-50 p-3"
               >
-                <img src={s.icon} alt={s.label} className="mb-1 h-[18px] w-[18px]" />
+                <img src={s.icon} alt={s.label} loading="lazy" decoding="async" className="mb-1 h-[18px] w-[18px]" />
                 <span className="text-xs text-gray-500">{s.label}</span>
                 <span className="text-sm font-semibold text-gray-900">{s.value}</span>
               </div>
