@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "main": {
-      "type": "discover-m-grid",
-      "settings": {}
-    }
-  },
-  "order": ["main"]
-}
