@@ -28,6 +28,7 @@ body:has(.dm-grid) #MainContent { margin: 0 !important; padding: 0 !important; }
 .dm-card__arrow:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .dm-card--climb { grid-row: 1/span 2; }
 .dm-card--climb h2 { color: #000; }
+.dm-card--climb > img { object-position: center center; }
 .dm-card--range { grid-column: 2; grid-row: 1; }
 .dm-card__range-copy { color: #fff; font-size: 17px; font-weight: 600; left: 16px; line-height: 22px; top: 15px; }
 .dm-card__range-copy strong { font-size: 28px; font-weight: 800; line-height: 28px; }
