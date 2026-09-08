@@ -1,0 +1,47 @@
+{% render 'velotric-assets' %}
+
+<footer class="vt-footer">
+  <div class="vt-footer__inner">
+    <div>
+      <a class="vt-footer__logo" href="{{ routes.root_url }}">
+        <img src="{{ velotric_logo }}" alt="Velotric" width="160" height="28" loading="lazy">
+      </a>
+      <p style="color:#b3b3b3;font-size:13px;max-width:280px;">Effortless Ride. Elevated Power. Premium electric bikes for every journey.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="/collections/ebikes">All Ebikes</a></li>
+        <li><a href="{% render 'velotric-link', handle: 'velotric-discover-3-commuter-ebike', view: 'discover3' %}">Discover 3</a></li>
+        <li><a href="{% render 'velotric-link', handle: 'velotric-nomad-2x', view: 'nomad' %}">Nomad 2X</a></li>
+        <li><a href="{% render 'velotric-link', handle: 'velotric-fold-1-plus', view: 'fold' %}">Fold 1 Plus</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="/pages/contact">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Warranty</a></li>
+        <li><a href="#">Shipping</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="vt-footer__bottom">&copy; {{ 'now' | date: '%Y' }} Velotric. Demo store for presentation only.</div>
+</footer>
+
+{% schema %}
+{
+  "name": "Velotric Footer",
+  "settings": [],
+  "presets": [{ "name": "Velotric Footer" }]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{%- liquid
+  assign vp_handle = handle | default: 'velotric-discover-3-commuter-ebike'
+  assign vp_view = view | default: 'discover3'
+  assign vp_product = all_products[vp_handle]
+  assign vp_suffix = ''
+
+  if request.design_mode or request.visual_preview_mode
+    assign vp_suffix = '?preview_theme_id=' | append: theme.id
+  endif
+
+  if vp_product != blank
+    echo vp_product.url
+    if vp_suffix != blank
+      unless vp_product.url contains '?'
+        echo vp_suffix
+      else
+        echo vp_suffix | replace: '?', '&'
+      endunless
+    endif
+  else
+    echo routes.root_url
+    if routes.root_url contains '?'
+      echo '&view='
+    else
+      echo '?view='
+    endif
+    echo vp_view
+    if vp_suffix != blank
+      echo vp_suffix | replace: '?', '&'
+    endif
+  endif
+-%}

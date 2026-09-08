@@ -1,0 +1,87 @@
+{% render 'velotric-assets' %}
+
+<section class="vt-home-hero">
+  <img class="vt-home-hero__bg" src="{{ velotric_hero_home }}" alt="Velotric Discover 3" loading="eager" width="1920" height="1080">
+  <div class="vt-home-hero__overlay"></div>
+  <div class="vt-home-hero__content">
+    <p style="font-size:14px;font-weight:600;margin:0 0 8px;opacity:.9;">Effortless Ride. Elevated Power.</p>
+    <h1>Discover 3 Comfort Commuter Ebike</h1>
+    <p>Ultimate comfort for your daily commute. Up to 80 miles range, UL certified, IPX7 battery.</p>
+    <a class="vt-btn vt-btn--primary" href="{% render 'velotric-link', handle: 'velotric-discover-3-commuter-ebike', view: 'discover3' %}">Buy Now</a>
+    <a class="vt-btn vt-btn--outline" href="{{ routes.root_url }}">Shop All</a>
+  </div>
+</section>
+
+<section class="vt-home-trust">
+  <div class="vt-home-trust__inner">
+    <span>14 Day Trial</span>
+    <span>Free Shipping</span>
+    <span>2 Year Warranty</span>
+    <span>UL2271 / UL2849 Certified</span>
+  </div>
+</section>
+
+<section class="vt-home-products">
+  <h2>Best Sellers</h2>
+  <p class="vt-home-products__sub">Explore our most popular ebikes</p>
+  <div class="vt-product-grid">
+    <a class="vt-product-card" href="{% render 'velotric-link', handle: 'velotric-discover-3-commuter-ebike', view: 'discover3' %}">
+      <div class="vt-product-card__img">
+        <img src="{{ velotric_img_lemans }}" alt="Velotric Discover 3" loading="lazy" width="600" height="600">
+      </div>
+      <div class="vt-product-card__body">
+        <span class="vt-product-card__badge">Best Seller</span>
+        <h3>Velotric Discover 3 Ebike</h3>
+        <p class="vt-product-card__tagline">Effortless Ride. Elevated Power.</p>
+        <span class="vt-product-card__price">$1,999.00</span>
+      </div>
+    </a>
+    <a class="vt-product-card" href="{% render 'velotric-link', handle: 'velotric-fold-1-plus', view: 'fold' %}">
+      <div class="vt-product-card__img">
+        <img src="{{ velotric_img_gallery_2 }}" alt="Velotric Fold 1 Plus" loading="lazy" width="600" height="600">
+      </div>
+      <div class="vt-product-card__body">
+        <span class="vt-product-card__badge">New</span>
+        <h3>Velotric Fold 1 Plus Ebike</h3>
+        <p class="vt-product-card__tagline">The New Standard of Folding Ebikes.</p>
+        <span class="vt-product-card__price">$1,499.00</span>
+      </div>
+    </a>
+    <a class="vt-product-card" href="{% render 'velotric-link', handle: 'velotric-nomad-2x', view: 'nomad' %}">
+      <div class="vt-product-card__img">
+        <img src="{{ velotric_img_gray }}" alt="Velotric Nomad 2X" loading="lazy" width="600" height="600">
+      </div>
+      <div class="vt-product-card__body">
+        <span class="vt-product-card__badge">Hot</span>
+        <h3>Velotric Nomad 2X Fat Tire Ebike</h3>
+        <p class="vt-product-card__tagline">Full Air Suspension for All-Terrains.</p>
+        <span class="vt-product-card__price">$2,299.00</span>
+      </div>
+    </a>
+    <a class="vt-product-card" href="{% render 'velotric-link', handle: 'velotric-t1-ebike', view: 't1' %}">
+      <div class="vt-product-card__img">
+        <img src="{{ velotric_img_motor }}" alt="Velotric T1" loading="lazy" width="600" height="600">
+      </div>
+      <div class="vt-product-card__body">
+        <span class="vt-product-card__badge">New</span>
+        <h3>Velotric T1 City Ebike</h3>
+        <p class="vt-product-card__tagline">Ultralight City Ebike.</p>
+        <span class="vt-product-card__price">$1,799.00</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="vt-home-banner">
+  <h2>Nearby Support, Nationwide Coverage</h2>
+  <p style="opacity:.85;margin:0 0 24px;">1,600+ dealer shops — Reliable and Trusted</p>
+  <a class="vt-btn vt-btn--primary" href="{% render 'velotric-link', handle: 'velotric-discover-3-commuter-ebike', view: 'discover3' %}">Test Ride Today</a>
+</section>
+
+{% schema %}
+{
+  "name": "Velotric Home",
+  "settings": [],
+  "presets": [{ "name": "Velotric Home" }]
+}
+{% endschema %}

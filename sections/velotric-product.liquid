@@ -1,0 +1,1048 @@
+{% render 'velotric-assets' %}
+{{ 'velotric-product.css' | asset_url | stylesheet_tag }}
+
+<div id="velotric-product-section">
+
+  <div class="vp-page-width">
+
+    <div class="vp-hero">
+      <div class="vp-hero__gallery">
+        <div class="vp-hero__main-image">
+          <img id="vp-main-image" src="{{ velotric_img_lemans }}" alt="Velotric Discover 3 Ebike - Lemans Blue">
+          <button class="vp-360-btn" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
+            360 View
+          </button>
+        </div>
+        <div class="vp-hero__thumbnails">
+          <button class="vp-thumbnail is-active" data-image="{{ velotric_img_lemans }}">
+            <img src="{{ velotric_img_lemans }}" alt="Lemans Blue Side">
+            <span class="vp-thumbnail__badge">Best Seller</span>
+          </button>
+          <button class="vp-thumbnail" data-image="{{ velotric_img_gallery_2 }}">
+            <img src="{{ velotric_img_gallery_2 }}" alt="Gallery 2">
+            <span class="vp-thumbnail__badge">Best Seller</span>
+          </button>
+          <button class="vp-thumbnail" data-image="{{ velotric_img_gallery_3 }}">
+            <img src="{{ velotric_img_gallery_3 }}" alt="Gallery 3">
+            <span class="vp-thumbnail__badge">Best Seller</span>
+          </button>
+          <button class="vp-thumbnail" data-image="{{ velotric_img_gallery_4 }}">
+            <img src="{{ velotric_img_gallery_4 }}" alt="Gallery 4">
+            <span class="vp-thumbnail__badge">Best Seller</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="vp-hero__info">
+        <span class="vp-badge">Best Seller</span>
+        <p class="vp-hero__subtitle">{{ section.settings.subtitle | default: 'Ultimate Comfort Commuter Ebike' }}</p>
+        <h1 class="vp-hero__title">{{ section.settings.heading | default: 'Velotric Discover 3 Ebike' }}</h1>
+        <div class="vp-hero__rating">
+          <div class="vp-stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0l2.5 5.3L16 6.1l-4 4.1L13 16 8 13.3 3 16l1-5.8-4-4.1 5.5-.8z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0l2.5 5.3L16 6.1l-4 4.1L13 16 8 13.3 3 16l1-5.8-4-4.1 5.5-.8z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0l2.5 5.3L16 6.1l-4 4.1L13 16 8 13.3 3 16l1-5.8-4-4.1 5.5-.8z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0l2.5 5.3L16 6.1l-4 4.1L13 16 8 13.3 3 16l1-5.8-4-4.1 5.5-.8z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#F59E0B"><path d="M8 0l2.5 5.3L16 6.1l-4 4.1L13 16 8 13.3 3 16l1-5.8-4-4.1 5.5-.8z"/></svg>
+          </div>
+          <span class="vp-rating-text">4.9</span>
+          <a href="#reviews" class="vp-rating-count">(116 Reviews)</a>
+        </div>
+        <div class="vp-hero__price">
+          <span class="vp-price">{{ section.settings.price | default: '$1,999.00' }}</span>
+        </div>
+        <p class="vp-affirm">or as low as $91/mo with Affirm. <a href="#" style="color: var(--vp-green);">Learn more</a></p>
+
+        <div class="vp-hero__size-selector">
+          <span class="vp-selector-label">Size</span>
+          <div class="vp-size-buttons">
+            <button class="vp-size-btn is-active" data-size="regular">Regular</button>
+            <button class="vp-size-btn" data-size="large">Large</button>
+          </div>
+          <p class="vp-size-guide" id="vp-size-guide">5'2''-5'11''</p>
+        </div>
+
+        <div class="vp-hero__color-selector">
+          <span class="vp-selector-label">Color: <span id="vp-color-name">Lemans Blue</span></span>
+          <div class="vp-color-swatches">
+            <button class="vp-swatch" data-color="Cherry Crimson" data-image="{{ velotric_img_cherry }}" style="background: #C41E3A;" aria-label="Cherry Crimson"></button>
+            <button class="vp-swatch" data-color="Emerald Green" style="background: #2E8B57;" aria-label="Emerald Green"></button>
+            <button class="vp-swatch" data-color="Stone Gray" style="background: #8B8680;" aria-label="Stone Gray"></button>
+            <button class="vp-swatch is-active" data-color="Lemans Blue" data-image="{{ velotric_img_lemans }}" style="background: #0055A4;" aria-label="Lemans Blue"></button>
+            <button class="vp-swatch" data-color="Mint" style="background: #98FF98;" aria-label="Mint"></button>
+          </div>
+        </div>
+
+        <div class="vp-hero__features">
+          <div class="vp-feature-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <div class="vp-feature-text">
+              <strong>80 Miles</strong>
+              <span>Max Range</span>
+            </div>
+          </div>
+          <div class="vp-feature-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div class="vp-feature-text">
+              <strong>28 MPH</strong>
+              <span>Top Speed</span>
+            </div>
+          </div>
+          <div class="vp-feature-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+            <div class="vp-feature-text">
+              <strong>SensorSwap™</strong>
+              <span>Torque/Cadence</span>
+            </div>
+          </div>
+          <div class="vp-feature-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="7" width="12" height="14" rx="2"/><path d="M10 7V5a2 2 0 1 1 4 0v2"/></svg>
+            <div class="vp-feature-text">
+              <strong>730 Wh</strong>
+              <span>Battery</span>
+            </div>
+          </div>
+          <div class="vp-feature-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <div class="vp-feature-text">
+              <strong>750W/75Nm</strong>
+              <span>Motor</span>
+            </div>
+          </div>
+          <div class="vp-feature-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+            <div class="vp-feature-text">
+              <strong>5 Modes</strong>
+              <span>Pedal Assist</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#specs" class="vp-learn-more">View Full Specs →</a>
+
+        <div class="vp-hero__shipping">
+          <div class="vp-shipping-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Free Shipping
+          </div>
+          <div class="vp-shipping-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            2-Year Warranty
+          </div>
+          <div class="vp-shipping-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            30-Day Returns
+          </div>
+        </div>
+
+        <button class="vp-buy-btn">Buy Now — $1,999.00</button>
+        <button class="vp-test-ride-btn">Book a Test Ride</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="vp-page-width">
+    <div class="vp-trust-badges" data-animate>
+      <div class="vp-trust-badge">
+        <div class="vp-trust-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="vp-trust-text">
+          <strong>1,200+ Dealer Shops</strong>
+          <span>Nationwide service network</span>
+        </div>
+      </div>
+      <div class="vp-trust-badge">
+        <div class="vp-trust-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="vp-trust-text">
+          <strong>Safety Certified</strong>
+          <span>UL2271 / UL2849</span>
+        </div>
+      </div>
+      <div class="vp-trust-badge">
+        <div class="vp-trust-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div class="vp-trust-text">
+          <strong>Waterproof</strong>
+          <span>IPX7 / IPX6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-nav-buttons">
+    <div class="vp-nav-buttons__container">
+      <a href="#vp-section-overview" class="vp-nav-button is-active">Overview</a>
+      <a href="#vp-section-specs" class="vp-nav-button">Specs</a>
+      <a href="#vp-section-compare" class="vp-nav-button">Compare</a>
+      <a href="#vp-section-faq" class="vp-nav-button">FAQ</a>
+    </div>
+  </div>
+
+  <div class="vp-page-width">
+    <div class="vp-whats-in-box" id="vp-section-overview" data-animate>
+      <h2 class="vp-section-title">What's in the Box</h2>
+      <div class="vp-box-content">
+        <div class="vp-box-list">
+          <ul>
+            <li>Velotric Discover 3 Ebike</li>
+            <li>730Wh Removable Battery</li>
+            <li>Battery</li>
+            <li>Charger</li>
+            <li>Manual &amp; App Guide</li>
+            <li>Toolkit</li>
+            <li>Front Light</li>
+            <li>Display</li>
+            <li>Front &amp; Rear Fenders</li>
+            <li>Rear Rack</li>
+            <li>Front &amp; Rear Reflectors</li>
+            <li>Bell</li>
+            <li>Cable Binder</li>
+            <li>Bike Kickstand</li>
+            <li>Suspension Seatpost</li>
+            <li>NFC Key Card</li>
+            <li>Left &amp; Right Pedals</li>
+            <li>Keys (2x)</li>
+          </ul>
+        </div>
+        <div class="vp-box-image">
+          <img src="{{ velotric_img_lemans }}" alt="Velotric Discover 3 Ebike">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-comfort">
+    <div class="vp-page-width">
+      <div class="vp-comfort__header" data-animate>
+        <p class="vp-eyebrow">ComfortMax™</p>
+        <h2 class="vp-comfort__heading">Plush from the first sit.</h2>
+        <p class="vp-comfort__trust">Trusted by 150,000+ Riders</p>
+      </div>
+      <div class="vp-comfort__guided-tour" data-animate>
+        <div class="vp-comfort__sticky-media">
+          <div class="vp-comfort__media-item is-active" data-comfort-feature="upright">
+            <video src="{{ velotric_video_upright }}" muted loop playsinline></video>
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="suspension">
+            <video src="{{ velotric_video_grips }}" muted loop playsinline></video>
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="saddle">
+            <img src="{{ velotric_img_lemans }}" alt="Breathable Saddle">
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="seatpost">
+            <img src="{{ velotric_img_suspension }}" alt="Suspension Seatpost">
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="stepthrough">
+            <img src="{{ velotric_img_lemans }}" alt="Low Step-Through">
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="stem">
+            <img src="{{ velotric_img_lemans }}" alt="Adjustable Stem">
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="handlebars">
+            <video src="{{ velotric_video_upright }}" muted loop playsinline></video>
+          </div>
+          <div class="vp-comfort__media-item" data-comfort-feature="grips">
+            <video src="{{ velotric_video_grips }}" muted loop playsinline></video>
+          </div>
+        </div>
+        <div class="vp-comfort__scroll-text">
+          <div class="vp-comfort__text-block is-active" data-comfort-feature="upright">
+            <h3>Upright Riding Posture</h3>
+            <p>The relaxed, upright geometry takes the weight off your wrists and lower back, giving you a natural, comfortable riding position that feels effortless.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="suspension">
+            <h3>Adjustable Air Suspension</h3>
+            <p>Hydraulic suspension fork with lockout smooths out potholes, curbs, and rough terrain — so your arms and shoulders stay relaxed on any surface.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="saddle">
+            <h3>Breathable Saddle</h3>
+            <p>Extra-wide, dual-spring saddle with high-density foam padding and breathable cover absorbs bumps and vibrations, keeping you comfortable on every ride.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="seatpost">
+            <h3>Suspension Seatpost</h3>
+            <p>Quick-adjust suspension seatpost lets you find your perfect saddle height in seconds while absorbing road shocks for a smoother ride.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="stepthrough">
+            <h3>Low Step-Through</h3>
+            <p>The low-step frame design makes it effortless to mount and dismount, whether you're in cycling gear or everyday clothes. No more awkward swinging.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="stem">
+            <h3>Adjustable Stem</h3>
+            <p>Adjustable stem lets you fine-tune your handlebar height and reach, so every rider can find their ideal comfort position.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="handlebars">
+            <h3>Swept-Back Handlebars</h3>
+            <p>Swept-back handlebars bring your hands closer for a natural, relaxed grip that reduces wrist strain and shoulder tension on long rides.</p>
+          </div>
+          <div class="vp-comfort__text-block" data-comfort-feature="grips">
+            <h3>Comfy Grips</h3>
+            <p>Contoured grips with vibration-dampening rubber reduce hand fatigue and pressure points, so your wrists stay happy mile after mile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-page-width">
+    <div class="vp-smooth" data-animate>
+      <h2 class="vp-smooth__heading">Smooth on streets.<br>Confident on climbs.<br>Free on gravel.</h2>
+      <div class="vp-smooth__sticky-layout">
+        <div class="vp-smooth__sticky-media">
+          <img class="vp-smooth__sticky-img is-active" data-smooth-feature="paved" src="{{ velotric_img_paved }}" alt="Paved Roads">
+          <img class="vp-smooth__sticky-img" data-smooth-feature="gravel" src="{{ velotric_img_gravel }}" alt="Gravel Trails">
+        </div>
+        <div class="vp-smooth__scroll-text">
+          <div class="vp-smooth__text-block is-active" data-smooth-feature="paved">
+            <h3>Paved Roads</h3>
+            <p>Glide effortlessly on smooth pavement with the powerful 750W motor and responsive torque sensor. Every commute feels like a breeze.</p>
+          </div>
+          <div class="vp-smooth__text-block" data-smooth-feature="gravel">
+            <h3>Gravel Trails</h3>
+            <p>Wide 2.4" tires and hydraulic suspension absorb the bumps of unpaved paths, giving you confidence and control on any terrain.</p>
+          </div>
+          <div class="vp-smooth__text-block" data-smooth-feature="safety">
+            <h3>Beyond Industry Safety Standards</h3>
+            <div class="vp-safety__content">
+              <img class="vp-safety__badge" src="{{ velotric_img_ul }}" alt="UL Certified">
+              <div class="vp-safety__text">
+                <strong>UL 2271 &amp; UL 2849 Certified</strong>
+                <p>The Discover 3 meets the highest electrical and fire safety standards. Both the battery system (UL 2271) and the complete ebike system (UL 2849) are independently tested and certified, so you can ride with total peace of mind.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-components">
+    <div class="vp-page-width">
+      <p class="vp-eyebrow" style="text-align:center;" data-animate>Premium Parts</p>
+      <h2 class="vp-section-title" data-animate>Built with Industry-Leading Components</h2>
+      <div class="vp-components__grid" data-animate>
+        <div class="vp-component-card">
+          <div class="vp-component-card__image">
+            <img src="{{ velotric_img_tire }}" alt="Tires">
+          </div>
+          <h3>Wide Cushion Tires</h3>
+          <p>2.4" puncture-resistant tires provide superior grip, comfort, and stability on any terrain.</p>
+        </div>
+        <div class="vp-component-card">
+          <div class="vp-component-card__image">
+            <img src="{{ velotric_img_motor }}" alt="Motor">
+          </div>
+          <h3>750W Rear Motor</h3>
+          <p>Powerful 750W motor with 75Nm torque delivers smooth, responsive acceleration up to 28 MPH.</p>
+        </div>
+        <div class="vp-component-card">
+          <div class="vp-component-card__image">
+            <img src="{{ velotric_img_range }}" alt="Range">
+          </div>
+          <h3>730Wh Battery</h3>
+          <p>High-capacity removable battery delivers up to 80 miles of range on a single charge.</p>
+        </div>
+        <div class="vp-component-card">
+          <div class="vp-component-card__image">
+            <img src="{{ velotric_img_suspension }}" alt="Suspension">
+          </div>
+          <h3>Hydraulic Suspension</h3>
+          <p>Front hydraulic suspension fork with lockout absorbs shocks for a smooth, controlled ride.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-page-width">
+    <div class="vp-specs" id="vp-section-specs" data-animate>
+      <h2 class="vp-section-title">Specifications</h2>
+      <div class="vp-specs__size-toggle">
+        <button class="vp-specs-size-btn is-active" data-specs-size="regular">Regular</button>
+        <button class="vp-specs-size-btn" data-specs-size="large">Large</button>
+      </div>
+      <div class="vp-specs__categories">
+
+        <div class="vp-spec-category is-open">
+          <button class="vp-spec-category__header" aria-expanded="true">
+            General
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vp-spec-category__body">
+            <div class="vp-spec-row"><span>Model</span><span>Discover 3</span></div>
+            <div class="vp-spec-row"><span>Frame</span><span>6061 Aluminum</span></div>
+            <div class="vp-spec-row"><span>Style</span><span>Step-Through</span></div>
+            <div class="vp-spec-row"><span>Rider Height</span><span data-specs-size="regular" class="is-visible">5'2''-5'11''</span><span data-specs-size="large">5'9''-6'7''</span></div>
+            <div class="vp-spec-row"><span>Max Payload</span><span>350 lbs</span></div>
+            <div class="vp-spec-row"><span>Weight</span><span data-specs-size="regular" class="is-visible">64 lbs</span><span data-specs-size="large">67 lbs</span></div>
+          </div>
+        </div>
+
+        <div class="vp-spec-category">
+          <button class="vp-spec-category__header" aria-expanded="false">
+            Motor &amp; Drive
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vp-spec-category__body">
+            <div class="vp-spec-row"><span>Motor</span><span>750W Rear Hub</span></div>
+            <div class="vp-spec-row"><span>Torque</span><span>75 Nm</span></div>
+            <div class="vp-spec-row"><span>Top Speed</span><span>28 MPH (Class 3)</span></div>
+            <div class="vp-spec-row"><span>Pedal Assist</span><span>5 Levels</span></div>
+            <div class="vp-spec-row"><span>Sensor</span><span>SensorSwap™ Torque/Cadence</span></div>
+            <div class="vp-spec-row"><span>Throttle</span><span>Half-twist Throttle</span></div>
+          </div>
+        </div>
+
+        <div class="vp-spec-category">
+          <button class="vp-spec-category__header" aria-expanded="false">
+            Battery &amp; Range
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vp-spec-category__body">
+            <div class="vp-spec-row"><span>Battery</span><span>730Wh Removable</span></div>
+            <div class="vp-spec-row"><span>Max Range</span><span>80 Miles</span></div>
+            <div class="vp-spec-row"><span>Charge Time</span><span>~5 Hours</span></div>
+            <div class="vp-spec-row"><span>Battery Cert.</span><span>UL 2271</span></div>
+          </div>
+        </div>
+
+        <div class="vp-spec-category">
+          <button class="vp-spec-category__header" aria-expanded="false">
+            Wheels &amp; Tires
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vp-spec-category__body">
+            <div class="vp-spec-row"><span>Tire Size</span><span>27.5" x 2.4"</span></div>
+            <div class="vp-spec-row"><span>Tire Type</span><span>Puncture-Resistant</span></div>
+            <div class="vp-spec-row"><span>Rim</span><span>Double-Wall Aluminum</span></div>
+          </div>
+        </div>
+
+        <div class="vp-spec-category">
+          <button class="vp-spec-category__header" aria-expanded="false">
+            Brakes &amp; Suspension
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vp-spec-category__body">
+            <div class="vp-spec-row"><span>Brakes</span><span>Hydraulic Disc, 180mm</span></div>
+            <div class="vp-spec-row"><span>Front Suspension</span><span>Hydraulic, Lockout</span></div>
+            <div class="vp-spec-row"><span>Travel</span><span>80mm</span></div>
+          </div>
+        </div>
+
+        <div class="vp-spec-category">
+          <button class="vp-spec-category__header" aria-expanded="false">
+            Features
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="vp-spec-category__body">
+            <div class="vp-spec-row"><span>Display</span><span>Color LCD</span></div>
+            <div class="vp-spec-row"><span>Lights</span><span>Integrated Front &amp; Rear</span></div>
+            <div class="vp-spec-row"><span>Waterproof</span><span>IPX7 / IPX6</span></div>
+            <div class="vp-spec-row"><span>NFC</span><span>Yes</span></div>
+            <div class="vp-spec-row"><span>App Connectivity</span><span>Bluetooth</span></div>
+            <div class="vp-spec-row"><span>Passcode Lock</span><span>Yes</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-compare" id="vp-section-compare">
+    <div class="vp-page-width">
+      <h2 class="vp-section-title" data-animate>Compare Models</h2>
+      <div class="vp-compare__table-wrapper" data-animate>
+        <table class="vp-compare__table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <span class="vp-compare__best-seller">Best Seller</span>
+                <img src="{{ velotric_img_cherry }}" alt="Discover 3">
+                <strong>Discover 3</strong>
+                <span>$1,999</span>
+              </th>
+              <th>
+                <img src="{{ velotric_img_dm }}" alt="Discover M">
+                <strong>Discover M</strong>
+                <span>$2,499</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Motor</td>
+              <td>750W / 75Nm</td>
+              <td>500W / 55Nm</td>
+            </tr>
+            <tr>
+              <td>Top Speed</td>
+              <td>28 MPH</td>
+              <td>25 MPH</td>
+            </tr>
+            <tr>
+              <td>Battery</td>
+              <td>730 Wh</td>
+              <td>504 Wh</td>
+            </tr>
+            <tr>
+              <td>Max Range</td>
+              <td>80 Miles</td>
+              <td>55 Miles</td>
+            </tr>
+            <tr>
+              <td>Sensor</td>
+              <td>SensorSwap™ Torque/Cadence</td>
+              <td>Cadence</td>
+            </tr>
+            <tr>
+              <td>Suspension</td>
+              <td>Hydraulic, Lockout</td>
+              <td>Hydraulic, Lockout</td>
+            </tr>
+            <tr>
+              <td>Brakes</td>
+              <td>Hydraulic Disc 180mm</td>
+              <td>Hydraulic Disc 160mm</td>
+            </tr>
+            <tr>
+              <td>Tires</td>
+              <td>27.5" x 2.4"</td>
+              <td>27.5" x 2.2"</td>
+            </tr>
+            <tr>
+              <td>Waterproof</td>
+              <td>IPX7 / IPX6</td>
+              <td>IPX6</td>
+            </tr>
+            <tr>
+              <td>ComfortMax System</td>
+              <td><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D8C3C" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td>
+              <td><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D8C3C" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td>
+            </tr>
+            <tr>
+              <td>Smart Features</td>
+              <td>NFC + App</td>
+              <td>App Only</td>
+            </tr>
+            <tr>
+              <td>Anti-theft</td>
+              <td>NFC + Passcode</td>
+              <td>Passcode</td>
+            </tr>
+            <tr>
+              <td>NFC Unlock</td>
+              <td><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D8C3C" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Color Display</td>
+              <td><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D8C3C" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-page-width">
+    <div class="vp-faq" id="vp-section-faq" data-animate>
+      <h2 class="vp-section-title">Frequently Asked Questions</h2>
+      <div class="vp-faq__list">
+
+        <div class="vp-faq-item">
+          <button class="vp-faq-item__question">
+            What is the max speed and range of the Discover 3?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="vp-faq-item__answer">
+            <p>The Discover 3 reaches a top speed of 28 MPH (Class 3) and offers a maximum range of up to 80 miles on a single charge, depending on riding conditions, rider weight, and assist level.</p>
+          </div>
+        </div>
+
+        <div class="vp-faq-item">
+          <button class="vp-faq-item__question">
+            How long does it take to charge the battery?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="vp-faq-item__answer">
+            <p>The 730Wh battery fully charges in approximately 5 hours using the included charger. The battery is removable, so you can charge it on or off the bike.</p>
+          </div>
+        </div>
+
+        <div class="vp-faq-item">
+          <button class="vp-faq-item__question">
+            What is SensorSwap™ technology?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="vp-faq-item__answer">
+            <p>SensorSwap™ allows you to switch between torque and cadence sensors, giving you the flexibility to choose between a more natural, responsive ride (torque) or a consistent, relaxed assist (cadence) depending on your preference.</p>
+          </div>
+        </div>
+
+        <div class="vp-faq-item">
+          <button class="vp-faq-item__question">
+            Is the Discover 3 waterproof?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="vp-faq-item__answer">
+            <p>Yes! The Discover 3 is rated IPX7 for the battery and IPX6 for the bike system, meaning it can handle heavy rain and splashing without issue. Ride with confidence in any weather.</p>
+          </div>
+        </div>
+
+        <div class="vp-faq-item">
+          <button class="vp-faq-item__question">
+            What size should I choose: Regular or Large?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="vp-faq-item__answer">
+            <p>The Regular size fits riders 5'2''-5'11'', while the Large fits riders 5'9''-6'7''. If you're between 5'9'' and 5'11'', both sizes may work — we recommend the Regular for a more nimble feel and the Large for a more stretched-out, stable ride.</p>
+          </div>
+        </div>
+
+        <div class="vp-faq-item">
+          <button class="vp-faq-item__question">
+            What is the warranty and return policy?
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="vp-faq-item__answer">
+            <p>The Discover 3 comes with a 2-year warranty covering the frame, motor, battery, and electronics. We also offer a 30-day return policy — if you're not satisfied, return it for a full refund.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-page-width">
+    <div class="vp-newsletter" data-animate>
+      <div class="vp-newsletter__inner">
+        <h2>Stay Updated.</h2>
+        <p>Stay up to date. Get great offers, news and trends – free of charge in your mailbox.</p>
+        <form class="vp-newsletter__form" onsubmit="return false;">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="vp-sticky-bar" id="vp-sticky-bar">
+    <div class="vp-sticky-bar__inner">
+      <span class="vp-sticky-bar__title">{{ section.settings.heading | default: 'Velotric Discover 3 Ebike' }}</span>
+      <span class="vp-sticky-bar__price">{{ section.settings.price | default: '$1,999.00' }}</span>
+      <button class="vp-sticky-bar__buy">Buy Now</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var section = document.getElementById('velotric-product-section');
+  if (!section) return;
+
+  var mainImage = document.getElementById('vp-main-image');
+  var thumbnails = section.querySelectorAll('.vp-thumbnail');
+  var sizeBtns = section.querySelectorAll('.vp-size-btn');
+  var sizeGuide = document.getElementById('vp-size-guide');
+  var swatches = section.querySelectorAll('.vp-swatch');
+  var colorName = document.getElementById('vp-color-name');
+  var specCategories = section.querySelectorAll('.vp-spec-category');
+  var specSizeBtns = section.querySelectorAll('.vp-specs-size-btn');
+  var tabBtns = section.querySelectorAll('.vp-tab-btn');
+  var tabPanels = section.querySelectorAll('.vp-tab-panel');
+  var faqItems = section.querySelectorAll('.vp-faq-item');
+  var stickyBar = document.getElementById('vp-sticky-bar');
+  var videoCards = section.querySelectorAll('.vp-video-card');
+
+  var sizeGuideMap = {
+    regular: "5'2''-5'11''",
+    large: "5'9''-6'7''"
+  };
+
+  function initGallery() {
+    thumbnails.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var imgSrc = this.getAttribute('data-image');
+        if (imgSrc && mainImage) {
+          mainImage.style.opacity = '0';
+          setTimeout(function () {
+            mainImage.src = imgSrc;
+            mainImage.style.opacity = '1';
+          }, 150);
+        }
+        thumbnails.forEach(function (t) { t.classList.remove('is-active'); });
+        this.classList.add('is-active');
+      });
+    });
+  }
+
+  function initSizeSelector() {
+    sizeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var size = this.getAttribute('data-size');
+        sizeBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        this.classList.add('is-active');
+        if (sizeGuide && sizeGuideMap[size]) {
+          sizeGuide.textContent = sizeGuideMap[size];
+        }
+        syncSpecSize(size);
+      });
+    });
+  }
+
+  function initColorSelector() {
+    swatches.forEach(function (swatch) {
+      swatch.addEventListener('click', function () {
+        var color = this.getAttribute('data-color');
+        var imgSrc = this.getAttribute('data-image');
+        swatches.forEach(function (s) { s.classList.remove('is-active'); });
+        this.classList.add('is-active');
+        if (colorName) {
+          colorName.textContent = color;
+        }
+        if (imgSrc && mainImage) {
+          mainImage.style.opacity = '0';
+          setTimeout(function () {
+            mainImage.src = imgSrc;
+            mainImage.style.opacity = '1';
+          }, 150);
+          thumbnails.forEach(function (t) { t.classList.remove('is-active'); });
+        }
+      });
+    });
+  }
+
+  function initSpecAccordions() {
+    specCategories.forEach(function (cat) {
+      var header = cat.querySelector('.vp-spec-category__header');
+      if (header) {
+        header.addEventListener('click', function () {
+          var isOpen = cat.classList.contains('is-open');
+          cat.classList.toggle('is-open');
+          header.setAttribute('aria-expanded', !isOpen);
+        });
+      }
+    });
+  }
+
+  function initSpecSizeToggle() {
+    specSizeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var size = this.getAttribute('data-specs-size');
+        specSizeBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        this.classList.add('is-active');
+        updateSpecSizeDisplay(size);
+      });
+    });
+    updateSpecSizeDisplay('regular');
+  }
+
+  function updateSpecSizeDisplay(size) {
+    var sizeSpans = section.querySelectorAll('[data-specs-size]');
+    sizeSpans.forEach(function (span) {
+      if (span.getAttribute('data-specs-size') === size) {
+        span.classList.add('is-visible');
+      } else {
+        span.classList.remove('is-visible');
+      }
+    });
+  }
+
+  function syncSpecSize(size) {
+    specSizeBtns.forEach(function (btn) {
+      if (btn.getAttribute('data-specs-size') === size) {
+        btn.classList.add('is-active');
+      } else {
+        btn.classList.remove('is-active');
+      }
+    });
+    updateSpecSizeDisplay(size);
+  }
+
+  function initTabs() {
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var tab = this.getAttribute('data-tab');
+        tabBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        tabPanels.forEach(function (p) { p.classList.remove('is-active'); });
+        this.classList.add('is-active');
+        var panel = section.querySelector('.vp-tab-panel[data-tab="' + tab + '"]');
+        if (panel) panel.classList.add('is-active');
+      });
+    });
+  }
+
+  function initFaq() {
+    faqItems.forEach(function (item) {
+      var question = item.querySelector('.vp-faq-item__question');
+      if (question) {
+        question.addEventListener('click', function () {
+          var isOpen = item.classList.contains('is-open');
+          faqItems.forEach(function (i) { i.classList.remove('is-open'); });
+          if (!isOpen) {
+            item.classList.add('is-open');
+          }
+          question.setAttribute('aria-expanded', !isOpen);
+        });
+      }
+    });
+  }
+
+  function initSmoothScroll() {
+    var links = section.querySelectorAll('a[href^="#"]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (href && href.length > 1) {
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  }
+
+  function initVideoObserver() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var video = entry.target.querySelector('video');
+          if (!video) return;
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+            video.play().catch(function () {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    videoCards.forEach(function (card) {
+      observer.observe(card);
+    });
+  }
+
+  function initStickyBar() {
+    if (!stickyBar) return;
+
+    var heroSection = section.querySelector('.vp-hero');
+    if (!heroSection) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            stickyBar.classList.remove('is-visible');
+          } else {
+            stickyBar.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(heroSection);
+  }
+
+  function initComfortGuidedTour() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var textBlocks = section.querySelectorAll('.vp-comfort__text-block');
+    var mediaItems = section.querySelectorAll('.vp-comfort__media-item');
+    if (!textBlocks.length || !mediaItems.length) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var feature = entry.target.getAttribute('data-comfort-feature');
+            textBlocks.forEach(function (b) { b.classList.remove('is-active'); });
+            entry.target.classList.add('is-active');
+            mediaItems.forEach(function (m) {
+              if (m.getAttribute('data-comfort-feature') === feature) {
+                m.classList.add('is-active');
+                var video = m.querySelector('video');
+                if (video) video.play().catch(function () {});
+              } else {
+                m.classList.remove('is-active');
+                var video = m.querySelector('video');
+                if (video) video.pause();
+              }
+            });
+          }
+        });
+      },
+      { threshold: 0.5, rootMargin: '-20% 0px -20% 0px' }
+    );
+
+    textBlocks.forEach(function (block) {
+      observer.observe(block);
+    });
+  }
+
+  function initSmoothStickyScroll() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var textBlocks = section.querySelectorAll('.vp-smooth__text-block');
+    var stickyImgs = section.querySelectorAll('.vp-smooth__sticky-img');
+    if (!textBlocks.length || !stickyImgs.length) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var feature = entry.target.getAttribute('data-smooth-feature');
+            textBlocks.forEach(function (b) { b.classList.remove('is-active'); });
+            entry.target.classList.add('is-active');
+            stickyImgs.forEach(function (img) {
+              if (img.getAttribute('data-smooth-feature') === feature) {
+                img.classList.add('is-active');
+              } else {
+                img.classList.remove('is-active');
+              }
+            });
+          }
+        });
+      },
+      { threshold: 0.5, rootMargin: '-20% 0px -20% 0px' }
+    );
+
+    textBlocks.forEach(function (block) {
+      observer.observe(block);
+    });
+  }
+
+  function initScrollAnimations() {
+    if (!('IntersectionObserver' in window)) return;
+
+    var animElements = section.querySelectorAll('[data-animate]');
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    animElements.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  function initNavButtons() {
+    var navButtons = section.querySelectorAll('.vp-nav-button');
+    var sections = [
+      { id: 'vp-section-overview', button: section.querySelector('.vp-nav-button[href="#vp-section-overview"]') },
+      { id: 'vp-section-specs', button: section.querySelector('.vp-nav-button[href="#vp-section-specs"]') },
+      { id: 'vp-section-compare', button: section.querySelector('.vp-nav-button[href="#vp-section-compare"]') },
+      { id: 'vp-section-faq', button: section.querySelector('.vp-nav-button[href="#vp-section-faq"]') }
+    ].filter(function (s) { return document.getElementById(s.id); });
+
+    navButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var href = this.getAttribute('href');
+        var target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navButtons.forEach(function (b) { b.classList.remove('is-active'); });
+            var match = sections.find(function (s) { return s.id === entry.target.id; });
+            if (match && match.button) {
+              match.button.classList.add('is-active');
+            }
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '-100px 0px -50% 0px' }
+    );
+
+    sections.forEach(function (s) {
+      var el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  function init() {
+    initGallery();
+    initSizeSelector();
+    initColorSelector();
+    initSpecAccordions();
+    initSpecSizeToggle();
+    initTabs();
+    initFaq();
+    initSmoothScroll();
+    initVideoObserver();
+    initStickyBar();
+    initComfortGuidedTour();
+    initSmoothStickyScroll();
+    initScrollAnimations();
+    initNavButtons();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Velotric Product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Velotric Discover 3 Ebike"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "$1,999.00"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Ultimate Comfort Commuter Ebike"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Velotric Product"
+    }
+  ]
+}
+{% endschema %}

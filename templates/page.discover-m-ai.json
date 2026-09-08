@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "discover-m-ai",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

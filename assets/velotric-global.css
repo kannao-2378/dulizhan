@@ -1,0 +1,371 @@
+body.velotric-store {
+  margin: 0;
+  font-family: 'Manrope-Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #262626;
+  background: #fff;
+}
+
+body.velotric-store .shopify-section-group-header-group,
+body.velotric-store .shopify-section-group-footer-group {
+  display: block;
+}
+
+.vt-announcement {
+  background: #262626;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  padding: 10px 16px;
+  line-height: 1.4;
+}
+
+.vt-announcement a {
+  color: #00c767;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.vt-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.vt-header__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.vt-header__logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.vt-header__nav {
+  display: none;
+  gap: 24px;
+  flex: 1;
+}
+
+@media (min-width: 990px) {
+  .vt-header__nav {
+    display: flex;
+  }
+}
+
+.vt-header__nav a {
+  color: #262626;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.vt-header__nav a:hover {
+  color: #2d8c3c;
+}
+
+.vt-header__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.vt-header__actions a {
+  color: #262626;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.vt-header__cart {
+  position: relative;
+}
+
+.vt-menu-toggle {
+  display: flex;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+@media (min-width: 990px) {
+  .vt-menu-toggle {
+    display: none;
+  }
+}
+
+.vt-mobile-nav {
+  display: none;
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+.vt-mobile-nav.is-open {
+  display: flex;
+}
+
+.vt-mobile-nav a {
+  padding: 12px 0;
+  color: #262626;
+  text-decoration: none;
+  font-size: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.vt-footer {
+  background: #262626;
+  color: #fff;
+  padding: 48px 24px 24px;
+}
+
+.vt-footer__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 750px) {
+  .vt-footer__inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.vt-footer__logo img {
+  height: 28px;
+  filter: brightness(0) invert(1);
+  margin-bottom: 16px;
+}
+
+.vt-footer h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.vt-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vt-footer li {
+  margin-bottom: 10px;
+}
+
+.vt-footer a {
+  color: #b3b3b3;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.vt-footer a:hover {
+  color: #fff;
+}
+
+.vt-footer__bottom {
+  max-width: 1400px;
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #404040;
+  font-size: 12px;
+  color: #898989;
+  text-align: center;
+}
+
+.vt-home-hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.vt-home-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vt-home-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 60%, transparent 100%);
+}
+
+.vt-home-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  color: #fff;
+}
+
+.vt-home-hero h1 {
+  font-family: 'Manrope-ExtraBold', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  margin: 0 0 16px;
+  line-height: 1.1;
+}
+
+.vt-home-hero p {
+  font-size: 18px;
+  margin: 0 0 32px;
+  max-width: 480px;
+}
+
+.vt-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.vt-btn--primary {
+  background: #2d8c3c;
+  color: #fff;
+}
+
+.vt-btn--primary:hover {
+  background: #247a31;
+  color: #fff;
+}
+
+.vt-btn--outline {
+  border: 2px solid #fff;
+  color: #fff;
+  margin-left: 12px;
+}
+
+.vt-home-trust {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.vt-home-trust__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 48px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.vt-home-products {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.vt-home-products h2 {
+  font-family: 'Manrope-ExtraBold', sans-serif;
+  font-size: 36px;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.vt-home-products__sub {
+  text-align: center;
+  color: #595959;
+  margin: 0 0 48px;
+}
+
+.vt-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.vt-product-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .2s;
+}
+
+.vt-product-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+}
+
+.vt-product-card__img {
+  aspect-ratio: 1;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+.vt-product-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vt-product-card__body {
+  padding: 20px;
+}
+
+.vt-product-card__badge {
+  display: inline-block;
+  background: #2d8c3c;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.vt-product-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.vt-product-card__tagline {
+  font-size: 13px;
+  color: #595959;
+  margin: 0 0 12px;
+}
+
+.vt-product-card__price {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.vt-home-banner {
+  background: #262626;
+  color: #fff;
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.vt-home-banner h2 {
+  font-family: 'Manrope-ExtraBold', sans-serif;
+  font-size: 28px;
+  margin: 0 0 16px;
+}

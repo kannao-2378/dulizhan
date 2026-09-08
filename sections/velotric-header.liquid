@@ -1,0 +1,52 @@
+{% render 'velotric-assets' %}
+{{ 'velotric-product.css' | asset_url | stylesheet_tag }}
+{{ 'velotric-global.css' | asset_url | stylesheet_tag }}
+
+<header class="vt-header" data-vt-header>
+  <div class="vt-header__inner">
+    <button class="vt-menu-toggle" type="button" aria-label="Menu" data-vt-menu-toggle>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <a class="vt-header__logo" href="{{ routes.root_url }}">
+      <img src="{{ velotric_logo }}" alt="Velotric" width="160" height="28" loading="eager">
+    </a>
+    <nav class="vt-header__nav" aria-label="Main">
+      <a href="{{ routes.root_url }}">Ebikes</a>
+      <a href="{% render 'velotric-link', handle: 'velotric-discover-3-commuter-ebike', view: 'discover3' %}">Discover 3</a>
+      <a href="{% render 'velotric-link', handle: 'velotric-nomad-2x', view: 'nomad' %}">Nomad 2X</a>
+      <a href="{% render 'velotric-link', handle: 'velotric-fold-1-plus', view: 'fold' %}">Fold 1 Plus</a>
+      <a href="{{ routes.root_url }}">Sales</a>
+      <a href="{{ routes.root_url }}">Support</a>
+    </nav>
+    <div class="vt-header__actions">
+      <a href="{{ routes.account_url }}">Account</a>
+      <a href="{{ routes.cart_url }}" class="vt-header__cart">Cart ({{ cart.item_count }})</a>
+    </div>
+  </div>
+  <nav class="vt-mobile-nav" data-vt-mobile-nav aria-label="Mobile">
+    <a href="{{ routes.root_url }}">Ebikes</a>
+    <a href="{% render 'velotric-link', handle: 'velotric-discover-3-commuter-ebike', view: 'discover3' %}">Discover 3</a>
+    <a href="{% render 'velotric-link', handle: 'velotric-nomad-2x', view: 'nomad' %}">Nomad 2X</a>
+    <a href="{% render 'velotric-link', handle: 'velotric-fold-1-plus', view: 'fold' %}">Fold 1 Plus</a>
+    <a href="{{ routes.cart_url }}">Cart</a>
+  </nav>
+</header>
+
+<script>
+(function () {
+  var toggle = document.querySelector('[data-vt-menu-toggle]');
+  var nav = document.querySelector('[data-vt-mobile-nav]');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function () {
+    nav.classList.toggle('is-open');
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Velotric Header",
+  "settings": [],
+  "presets": [{ "name": "Velotric Header" }]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+{%- liquid
+  assign vp_handle = handle | default: 'velotric-discover-3-commuter-ebike'
+  assign vp_product = all_products[vp_handle]
+  if vp_product != blank
+    echo vp_product.url
+  else
+    case vp_handle
+      when 'velotric-discover-3-commuter-ebike'
+        echo '/pages/velotric-discover-3'
+      when 'velotric-nomad-2x'
+        echo '/pages/velotric-nomad-2x'
+      when 'velotric-fold-1-plus'
+        echo '/pages/velotric-fold-1-plus'
+      when 'velotric-t1-ebike'
+        echo '/pages/velotric-t1'
+      else
+        echo '/pages/velotric-discover-3'
+    endcase
+  endif
+-%}
