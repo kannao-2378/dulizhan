@@ -1,0 +1,67 @@
+{{ 'discover-m-grid.css' | asset_url | stylesheet_tag }}
+
+<section class="dm-grid" aria-label="Discover M highlights">
+  <div class="dm-grid__inner">
+    <div class="dm-grid__primary">
+      <article class="dm-card dm-card--climb">
+        <img src="https://www.velotricbike.com/cdn/shop/files/mid_drive_motor_ebike_velotric_discover_m.webp?v=10414263997719092939" alt="Discover M climbing a long hill" width="1600" height="1100">
+        <h2>Long Hills Climb</h2>
+        <button type="button" class="dm-card__arrow" aria-label="Long Hills Climb details">⌄</button>
+      </article>
+      <article class="dm-card dm-card--range">
+        <img src="https://www.velotricbike.com/cdn/shop/files/long_range_mid_drive_electric_bike.webp?v=7197533249922931453" alt="Discover M long range riding" width="1600" height="600">
+        <div class="dm-card__range-copy">Up to<br><strong>95 Miles</strong><br>of Range</div>
+        <button type="button" class="dm-card__arrow" aria-label="Range details">⌄</button>
+      </article>
+      <article class="dm-card dm-card--auto">
+        <img src="https://www.velotricbike.com/cdn/shop/files/powerful_mid_drive_ebike_for_climbing_hill.webp?v=17164462524060649343" alt="Discover M Auto Mode on changing terrain" width="1600" height="600">
+        <h2>*Auto Mode</h2>
+        <p>Automatically Adjust Pedal Assist</p>
+        <button type="button" class="dm-card__arrow" aria-label="Auto Mode details">⌄</button>
+      </article>
+    </div>
+
+    <div class="dm-grid__secondary">
+      <article class="dm-card dm-card--upright">
+        <img src="https://www.velotricbike.com/cdn/shop/files/comfort_mid_drive_ebike_for_seniors.webp?v=324194211173503404" alt="Discover M upright riding position" width="800" height="1100">
+        <h2>Upright Riding Position</h2>
+        <button type="button" class="dm-card__arrow" aria-label="Upright riding details">⌄</button>
+      </article>
+      <article class="dm-card dm-card--brake">
+        <img src="https://www.velotricbike.com/cdn/shop/files/velotric_discover_m_hydraulic_disc_brake.webp?v=10726079988003261100" alt="Shimano CUES drivetrain" width="1000" height="600">
+        <h2>Shimano CUES 9-Speed</h2>
+        <button type="button" class="dm-card__arrow" aria-label="Shimano details">⌄</button>
+      </article>
+      <article class="dm-card dm-card--fork">
+        <img src="https://www.velotricbike.com/cdn/shop/files/velotric_discover_m_front_suspension_fork.webp?v=6463564928672444581" alt="80 millimeter air suspension" width="1000" height="600">
+        <h2>80mm Air Suspension</h2>
+        <button type="button" class="dm-card__arrow" aria-label="Suspension details">⌄</button>
+      </article>
+      <article class="dm-card dm-card--seat">
+        <img src="https://www.velotricbike.com/cdn/shop/files/velotric_discover_m_suspension_seatpost_2.webp?v=1900871556454546865" alt="Suspension seatpost" width="1000" height="600">
+        <h2>Suspension<br>Seatpost</h2>
+        <button type="button" class="dm-card__arrow" aria-label="Seatpost details">⌄</button>
+      </article>
+      <div class="dm-grid__split">
+        <article class="dm-card dm-card--find">
+          <img src="https://www.velotricbike.com/cdn/shop/files/velotric_discover_m_smart_locating_feature.webp?v=12993170215933566388" alt="Apple Find My and Google Find Hub" width="600" height="600">
+          <h2>Apple Find My &amp;<br>Google Find My Hub</h2>
+          <button type="button" class="dm-card__arrow" aria-label="Find My details">⌄</button>
+        </article>
+        <article class="dm-card dm-card--certified">
+          <img src="https://www.velotricbike.com/cdn/shop/files/velotric_discover_m_ul_ipx7_certified.webp?v=6942113293339868933" alt="IPX waterproof and UL certified" width="600" height="600">
+          <h2>IPX Waterproof<br>&amp; UL Certified</h2>
+          <button type="button" class="dm-card__arrow" aria-label="Certification details">⌄</button>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Discover M feature grid",
+  "settings": [],
+  "presets": [{ "name": "Discover M feature grid" }]
+}
+{% endschema %}
