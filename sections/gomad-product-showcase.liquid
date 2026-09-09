@@ -1,0 +1,142 @@
+{{ 'gomad-product-showcase.css' | asset_url | stylesheet_tag }}
+
+{% assign featured_product = section.settings.product %}
+{% if featured_product == blank %}
+  {% assign featured_product = all_products['akabang-bangtuan'] %}
+{% endif %}
+
+<section class="gp-showcase" data-gp-section="{{ section.id }}">
+  <div class="gp-showcase__inner">
+    <div class="gp-gallery" data-gp-gallery>
+      <div class="gp-gallery__stage">
+        {% if featured_product != blank and featured_product.media.size > 0 %}
+          {% for media in featured_product.media %}
+            {% if media.media_type == 'image' %}
+              <figure class="gp-gallery__slide{% if forloop.first %} is-active{% endif %}" data-gp-slide>
+                {{ media.preview_image | image_url: width: 1800 | image_tag: loading: 'eager', widths: '640, 900, 1200, 1600, 1800', sizes: '(min-width: 990px) 56vw, 100vw', alt: media.alt | default: featured_product.title }}
+              </figure>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <figure class="gp-gallery__slide is-active gp-gallery__placeholder">{{ 'product-1' | placeholder_svg_tag }}</figure>
+        {% endif %}
+        {% if section.settings.savings_badge != blank %}<span class="gp-gallery__badge">{{ section.settings.savings_badge }}</span>{% endif %}
+        <button class="gp-gallery__nav gp-gallery__nav--prev" type="button" data-gp-prev aria-label="Previous image">‹</button>
+        <button class="gp-gallery__nav gp-gallery__nav--next" type="button" data-gp-next aria-label="Next image">›</button>
+      </div>
+      <div class="gp-gallery__toolbar">
+        <span class="gp-gallery__counter"><span data-gp-current>1</span> / <span data-gp-total>{{ featured_product.media.size | default: 1 }}</span> Images</span>
+        <span class="gp-gallery__view">◆ 360 View</span>
+      </div>
+      <div class="gp-trust">
+        <div><span>▦</span><p><strong>{{ section.settings.trust_1_title }}</strong><small>{{ section.settings.trust_1_text }}</small></p></div>
+        <div><span>◉</span><p><strong>{{ section.settings.trust_2_title }}</strong><small>{{ section.settings.trust_2_text }}</small></p></div>
+        <div><span>♢</span><p><strong>{{ section.settings.trust_3_title }}</strong><small>{{ section.settings.trust_3_text }}</small></p></div>
+      </div>
+    </div>
+
+    <div class="gp-info">
+      <p class="gp-info__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ featured_product.title | default: 'AKAbang bangtuan' }}</h1>
+      <div class="gp-rating" aria-label="Rated {{ section.settings.rating }} out of 5">
+        <span>★★★★★</span><a href="#">{{ section.settings.review_count }} Reviews</a>
+      </div>
+      <div class="gp-price">
+        <strong>{{ featured_product.price | default: 199900 | money }}</strong>
+        {% if featured_product.compare_at_price > featured_product.price %}<s>{{ featured_product.compare_at_price | money }}</s>{% endif %}
+        {% if section.settings.savings_badge != blank %}<span>{{ section.settings.savings_badge }}</span>{% endif %}
+      </div>
+      <p class="gp-finance">{{ section.settings.finance_text }}</p>
+
+      {% if featured_product != blank %}
+        {% form 'product', featured_product, class: 'gp-form' %}
+          {% for option in featured_product.options_with_values %}
+            <fieldset class="gp-option">
+              <legend><strong>{{ option.name }}:</strong> <span data-gp-option-label>{{ option.selected_value }}</span></legend>
+              <div class="gp-option__values">
+                {% for value in option.values %}
+                  <label>
+                    <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
+                    <span>{{ value }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+            </fieldset>
+          {% endfor %}
+          <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}">
+
+          <div class="gp-specs">
+            <div><span>▣</span><em>Max Payload</em><strong>{{ section.settings.spec_payload }}</strong></div>
+            <div><span>◉</span><em>Motor</em><strong>{{ section.settings.spec_motor }}</strong></div>
+            <div><span>↗</span><em>Max Range</em><strong>{{ section.settings.spec_range }}</strong></div>
+            <div><span>ϟ</span><em>Battery</em><strong>{{ section.settings.spec_battery }}</strong></div>
+            <div><span>∩</span><em>Top Speed</em><strong>{{ section.settings.spec_speed }}</strong></div>
+            <div><span>◉</span><em>SensorSwap™</em><strong>{{ section.settings.spec_sensor }}</strong></div>
+            <div><span>⚙</span><em>Pedal Assist Mode</em><strong>{{ section.settings.spec_modes }}</strong></div>
+          </div>
+          <button class="gp-more" type="button">Learn about More Features</button>
+          <div class="gp-benefits"><span>▣ 14-Day Trial</span><span>▱ Free Shipping</span><span>♢ 2-Year Warranty</span><b>＋</b></div>
+          <button class="gp-buy" type="submit" name="add"{% unless featured_product.available %} disabled{% endunless %}>{% if featured_product.available %}Buy Now{% else %}Unavailable{% endif %}</button>
+          <button class="gp-test" type="button">Test Ride</button>
+        {% endform %}
+      {% else %}
+        <div class="gp-empty">Choose a product in the theme editor to display it here.</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-gp-section="{{ section.id }}"]');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = 'true';
+  const slides = [...root.querySelectorAll('[data-gp-slide]')];
+  const current = root.querySelector('[data-gp-current]');
+  const total = root.querySelector('[data-gp-total]');
+  let index = 0;
+  if (total) total.textContent = Math.max(slides.length, 1);
+  const show = (next) => {
+    if (!slides.length) return;
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+    if (current) current.textContent = index + 1;
+  };
+  root.querySelector('[data-gp-prev]')?.addEventListener('click', () => show(index - 1));
+  root.querySelector('[data-gp-next]')?.addEventListener('click', () => show(index + 1));
+  root.querySelectorAll('.gp-option input').forEach(input => input.addEventListener('change', () => {
+    const label = input.closest('fieldset')?.querySelector('[data-gp-option-label]');
+    if (label) label.textContent = input.value;
+  }));
+})();
+</script>
+
+{% schema %}
+{
+  "name": "GoMad product showcase",
+  "settings": [
+    {"type":"product","id":"product","label":"Product"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Compact Cargo Ebike"},
+    {"type":"text","id":"rating","label":"Rating","default":"4.9"},
+    {"type":"text","id":"review_count","label":"Review count","default":"29"},
+    {"type":"text","id":"savings_badge","label":"Savings badge","default":"Save $284.99"},
+    {"type":"text","id":"finance_text","label":"Finance text","default":"Starting at $125/mo or 0% APR with affirm."},
+    {"type":"header","content":"Specifications"},
+    {"type":"text","id":"spec_payload","label":"Max payload","default":"500 Lbs/176 Lbs Rear Rack (MIK HD)"},
+    {"type":"text","id":"spec_motor","label":"Motor","default":"750W (1300W Peak) /85Nm"},
+    {"type":"text","id":"spec_range","label":"Max range","default":"75 Miles"},
+    {"type":"text","id":"spec_battery","label":"Battery","default":"801.6 Wh/48V"},
+    {"type":"text","id":"spec_speed","label":"Top speed","default":"28 MPH"},
+    {"type":"text","id":"spec_sensor","label":"Sensor","default":"Torque/Cadence"},
+    {"type":"text","id":"spec_modes","label":"Pedal assist modes","default":"5 Modes"},
+    {"type":"header","content":"Trust row"},
+    {"type":"text","id":"trust_1_title","label":"Trust 1 title","default":"1,600+ Dealer Shops"},
+    {"type":"text","id":"trust_1_text","label":"Trust 1 text","default":"Reliable and Trusted"},
+    {"type":"text","id":"trust_2_title","label":"Trust 2 title","default":"Safety Certified"},
+    {"type":"text","id":"trust_2_text","label":"Trust 2 text","default":"UL2271/UL2849 Certification"},
+    {"type":"text","id":"trust_3_title","label":"Trust 3 title","default":"Waterproof"},
+    {"type":"text","id":"trust_3_text","label":"Trust 3 text","default":"IPX7 Battery, IPX6 Frame"}
+  ],
+  "presets": [{"name":"GoMad product showcase"}]
+}
+{% endschema %}
