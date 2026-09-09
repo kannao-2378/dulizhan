@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "discover_m_grid": {
+      "type": "discover-m-grid",
+      "settings": {}
+    },
+    "comfortmax_compare": {
+      "type": "comfortmax-compare",
+      "settings": {}
+    }
+  },
+  "order": [
+    "discover_m_grid",
+    "comfortmax_compare"
+  ]
+}
