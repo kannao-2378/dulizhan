@@ -27,7 +27,7 @@
       </div>
       <div class="gp-gallery__toolbar">
         <span class="gp-gallery__counter"><span data-gp-current>1</span> / <span data-gp-total>{{ featured_product.media.size | default: 1 }}</span> Images</span>
-        <span class="gp-gallery__view">◆ 360 View</span>
+        <button class="gp-gallery__view" type="button" data-gp-360>◆ 360 View</button>
       </div>
       <div class="gp-trust">
         <div><span>▦</span><p><strong>{{ section.settings.trust_1_title }}</strong><small>{{ section.settings.trust_1_text }}</small></p></div>
@@ -55,17 +55,17 @@
             <fieldset class="gp-option">
               <legend><strong>Package:</strong> <span>size: 5'0&quot;-6'3&quot;</span></legend>
               <div class="gp-option__values">
-                <label><input type="radio" name="demo-package" checked><span>GoMad + Young Passenger Kit</span></label>
-                <label><input type="radio" name="demo-package"><span>GoMad + Passenger Kit</span></label>
-                <label><input type="radio" name="demo-package"><span>GoMad Only</span></label>
+                <label><input type="radio" name="demo-package" value="GoMad + Young Passenger Kit" data-gp-image="0" checked><span>GoMad + Young Passenger Kit</span></label>
+                <label><input type="radio" name="demo-package" value="GoMad + Passenger Kit" data-gp-image="3"><span>GoMad + Passenger Kit</span></label>
+                <label><input type="radio" name="demo-package" value="GoMad Only" data-gp-image="1"><span>GoMad Only</span></label>
               </div>
             </fieldset>
             <fieldset class="gp-option gp-option--color">
               <legend><strong>Color:</strong> <span data-gp-color-label>Dark Amber</span></legend>
               <div class="gp-colors">
-                <label><input type="radio" name="demo-color" value="Dark Amber" checked><span style="--swatch:#bb4938"></span></label>
-                <label><input type="radio" name="demo-color" value="Obsidian"><span style="--swatch:linear-gradient(135deg,#bb3e32,#e6b72e,#2b7987,#161616)"></span></label>
-                <label><input type="radio" name="demo-color" value="Sage"><span style="--swatch:#77784f"></span></label>
+                <label><input type="radio" name="demo-color" value="Dark Amber" data-gp-image="1" checked><span style="--swatch:#bb4938"></span></label>
+                <label><input type="radio" name="demo-color" value="Obsidian" data-gp-image="2"><span style="--swatch:linear-gradient(135deg,#bb3e32,#e6b72e,#2b7987,#161616)"></span></label>
+                <label><input type="radio" name="demo-color" value="Sage" data-gp-image="4"><span style="--swatch:#77784f"></span></label>
               </div>
             </fieldset>
           {% else %}
@@ -97,7 +97,8 @@
           <button class="gp-more" type="button">Learn about More Features</button>
           <div class="gp-benefits"><span>▣ 14-Day Trial</span><span>▱ Free Shipping</span><span>♢ 2-Year Warranty</span><b>＋</b></div>
           <button class="gp-buy" type="submit" name="add"{% unless featured_product.available %} disabled{% endunless %}>{% if featured_product.available %}Buy Now{% else %}Unavailable{% endif %}</button>
-          <button class="gp-test" type="button">Test Ride</button>
+          <button class="gp-test" type="button" data-gp-test>Test Ride</button>
+          <p class="gp-action-message" data-gp-message role="status" hidden></p>
         {% endform %}
       {% else %}
         <div class="gp-empty">Choose a product in the theme editor to display it here.</div>
@@ -124,14 +125,42 @@
   };
   root.querySelector('[data-gp-prev]')?.addEventListener('click', () => show(index - 1));
   root.querySelector('[data-gp-next]')?.addEventListener('click', () => show(index + 1));
+  let spinTimer;
+  root.querySelector('[data-gp-360]')?.addEventListener('click', (event) => {
+    if (slides.length < 2) return;
+    clearInterval(spinTimer);
+    event.currentTarget.classList.add('is-spinning');
+    let steps = 0;
+    spinTimer = setInterval(() => {
+      show(index + 1);
+      steps += 1;
+      if (steps >= slides.length) {
+        clearInterval(spinTimer);
+        event.currentTarget.classList.remove('is-spinning');
+      }
+    }, 180);
+  });
   root.querySelectorAll('.gp-option input').forEach(input => input.addEventListener('change', () => {
     const label = input.closest('fieldset')?.querySelector('[data-gp-option-label]');
     if (label) label.textContent = input.value;
+    if (input.dataset.gpImage) show(Number(input.dataset.gpImage));
   }));
   root.querySelectorAll('.gp-colors input').forEach(input => input.addEventListener('change', () => {
     const label = root.querySelector('[data-gp-color-label]');
     if (label) label.textContent = input.value;
   }));
+  const moreButton = root.querySelector('.gp-more');
+  const specs = root.querySelector('.gp-specs');
+  moreButton?.addEventListener('click', () => {
+    const collapsed = specs.classList.toggle('is-collapsed');
+    moreButton.textContent = collapsed ? 'Learn about More Features' : 'Show Fewer Features';
+  });
+  root.querySelector('[data-gp-test]')?.addEventListener('click', () => {
+    const message = root.querySelector('[data-gp-message]');
+    if (!message) return;
+    message.hidden = false;
+    message.textContent = 'Test Ride is ready for your final booking link.';
+  });
 })();
 </script>
 
