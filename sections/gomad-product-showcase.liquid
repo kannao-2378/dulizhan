@@ -1,4 +1,5 @@
 {{ 'gomad-product-showcase.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
 
 {% assign featured_product = section.settings.product %}
 {% if featured_product == blank %}
@@ -50,19 +51,38 @@
 
       {% if featured_product != blank %}
         {% form 'product', featured_product, class: 'gp-form' %}
-          {% for option in featured_product.options_with_values %}
+          {% if featured_product.has_only_default_variant %}
             <fieldset class="gp-option">
-              <legend><strong>{{ option.name }}:</strong> <span data-gp-option-label>{{ option.selected_value }}</span></legend>
+              <legend><strong>Package:</strong> <span>size: 5'0&quot;-6'3&quot;</span></legend>
               <div class="gp-option__values">
-                {% for value in option.values %}
-                  <label>
-                    <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
-                    <span>{{ value }}</span>
-                  </label>
-                {% endfor %}
+                <label><input type="radio" name="demo-package" checked><span>GoMad + Young Passenger Kit</span></label>
+                <label><input type="radio" name="demo-package"><span>GoMad + Passenger Kit</span></label>
+                <label><input type="radio" name="demo-package"><span>GoMad Only</span></label>
               </div>
             </fieldset>
-          {% endfor %}
+            <fieldset class="gp-option gp-option--color">
+              <legend><strong>Color:</strong> <span data-gp-color-label>Dark Amber</span></legend>
+              <div class="gp-colors">
+                <label><input type="radio" name="demo-color" value="Dark Amber" checked><span style="--swatch:#bb4938"></span></label>
+                <label><input type="radio" name="demo-color" value="Obsidian"><span style="--swatch:linear-gradient(135deg,#bb3e32,#e6b72e,#2b7987,#161616)"></span></label>
+                <label><input type="radio" name="demo-color" value="Sage"><span style="--swatch:#77784f"></span></label>
+              </div>
+            </fieldset>
+          {% else %}
+            {% for option in featured_product.options_with_values %}
+              <fieldset class="gp-option">
+                <legend><strong>{{ option.name }}:</strong> <span data-gp-option-label>{{ option.selected_value }}</span></legend>
+                <div class="gp-option__values">
+                  {% for value in option.values %}
+                    <label>
+                      <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              </fieldset>
+            {% endfor %}
+          {% endif %}
           <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}">
 
           <div class="gp-specs">
@@ -106,6 +126,10 @@
   root.querySelector('[data-gp-next]')?.addEventListener('click', () => show(index + 1));
   root.querySelectorAll('.gp-option input').forEach(input => input.addEventListener('change', () => {
     const label = input.closest('fieldset')?.querySelector('[data-gp-option-label]');
+    if (label) label.textContent = input.value;
+  }));
+  root.querySelectorAll('.gp-colors input').forEach(input => input.addEventListener('change', () => {
+    const label = root.querySelector('[data-gp-color-label]');
     if (label) label.textContent = input.value;
   }));
 })();
