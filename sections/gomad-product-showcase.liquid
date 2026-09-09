@@ -24,15 +24,22 @@
         {% if section.settings.savings_badge != blank %}<span class="gp-gallery__badge">{{ section.settings.savings_badge }}</span>{% endif %}
         <button class="gp-gallery__nav gp-gallery__nav--prev" type="button" data-gp-prev aria-label="Previous image">‹</button>
         <button class="gp-gallery__nav gp-gallery__nav--next" type="button" data-gp-next aria-label="Next image">›</button>
+        <div class="gp-spin" data-gp-spin hidden>
+          {% for i in (1..17) %}
+            {% capture frame_name %}gomad-360-{% if i < 10 %}0{% endif %}{{ i }}.webp{% endcapture %}
+            <img src="{{ frame_name | asset_url }}" alt="GoMad 360 view frame {{ i }}" draggable="false"{% unless forloop.first %} hidden{% endunless %} data-gp-frame>
+          {% endfor %}
+          <p>Drag left or right to rotate</p><button type="button" data-gp-spin-close aria-label="Close 360 view">×</button>
+        </div>
       </div>
       <div class="gp-gallery__toolbar">
         <span class="gp-gallery__counter"><span data-gp-current>1</span> / <span data-gp-total>{{ featured_product.media.size | default: 1 }}</span> Images</span>
-        <button class="gp-gallery__view" type="button" data-gp-360>◆ 360 View</button>
+        <button class="gp-gallery__view" type="button" data-gp-360>⬡ 360 View</button>
       </div>
       <div class="gp-trust">
-        <div><span>▦</span><p><strong>{{ section.settings.trust_1_title }}</strong><small>{{ section.settings.trust_1_text }}</small></p></div>
-        <div><span>◉</span><p><strong>{{ section.settings.trust_2_title }}</strong><small>{{ section.settings.trust_2_text }}</small></p></div>
-        <div><span>♢</span><p><strong>{{ section.settings.trust_3_title }}</strong><small>{{ section.settings.trust_3_text }}</small></p></div>
+        <div><span class="gp-trust-icon">▤</span><p><strong>{{ section.settings.trust_1_title }}</strong><small>{{ section.settings.trust_1_text }}</small></p></div>
+        <div><span class="gp-trust-icon gp-ul">UL</span><p><strong>{{ section.settings.trust_2_title }}</strong><small>{{ section.settings.trust_2_text }}</small></p></div>
+        <div><span class="gp-trust-icon">♢</span><p><strong>{{ section.settings.trust_3_title }}</strong><small>{{ section.settings.trust_3_text }}</small></p></div>
       </div>
     </div>
 
@@ -86,19 +93,30 @@
           <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}">
 
           <div class="gp-specs">
-            <div><span>▣</span><em>Max Payload</em><strong>{{ section.settings.spec_payload }}</strong></div>
-            <div><span>◉</span><em>Motor</em><strong>{{ section.settings.spec_motor }}</strong></div>
-            <div><span>↗</span><em>Max Range</em><strong>{{ section.settings.spec_range }}</strong></div>
-            <div><span>ϟ</span><em>Battery</em><strong>{{ section.settings.spec_battery }}</strong></div>
-            <div><span>∩</span><em>Top Speed</em><strong>{{ section.settings.spec_speed }}</strong></div>
-            <div><span>◉</span><em>SensorSwap™</em><strong>{{ section.settings.spec_sensor }}</strong></div>
-            <div><span>⚙</span><em>Pedal Assist Mode</em><strong>{{ section.settings.spec_modes }}</strong></div>
+            <div><img src="{{ 'gomad-icon-payload.svg' | asset_url }}" alt=""><em>Max Payload</em><strong>{{ section.settings.spec_payload }}</strong></div>
+            <div><img src="{{ 'gomad-icon-motor.svg' | asset_url }}" alt=""><em>Motor</em><strong>{{ section.settings.spec_motor }}</strong></div>
+            <div><img src="{{ 'gomad-icon-range.svg' | asset_url }}" alt=""><em>Max Range</em><strong>{{ section.settings.spec_range }}</strong></div>
+            <div><img src="{{ 'gomad-icon-battery.svg' | asset_url }}" alt=""><em>Battery</em><strong>{{ section.settings.spec_battery }}</strong></div>
+            <div><img src="{{ 'gomad-icon-speed.svg' | asset_url }}" alt=""><em>Top Speed</em><strong>{{ section.settings.spec_speed }}</strong></div>
+            <div><img src="{{ 'gomad-icon-sensor.svg' | asset_url }}" alt=""><em>SensorSwap™</em><strong>{{ section.settings.spec_sensor }}</strong></div>
+            <div><img src="{{ 'gomad-icon-modes.svg' | asset_url }}" alt=""><em>Pedal Assist Mode</em><strong>{{ section.settings.spec_modes }} ⓘ</strong></div>
           </div>
           <button class="gp-more" type="button">Learn about More Features</button>
-          <div class="gp-benefits"><span>▣ 14-Day Trial</span><span>▱ Free Shipping</span><span>♢ 2-Year Warranty</span><b>＋</b></div>
+          <div class="gp-benefits"><img src="{{ 'gomad-benefits.svg' | asset_url }}" alt="14-Day Trial, Free Shipping, 2-Year Warranty"><b>＋</b></div>
           <button class="gp-buy" type="submit" name="add"{% unless featured_product.available %} disabled{% endunless %}>{% if featured_product.available %}Buy Now{% else %}Unavailable{% endif %}</button>
           <button class="gp-test" type="button" data-gp-test>Test Ride</button>
           <p class="gp-action-message" data-gp-message role="status" hidden></p>
+          <div class="gp-enhance">
+            <h2>Enhance Your Ride</h2><h3>Add 3, save 30% <small>ⓘ</small></h3>
+            <div class="gp-accessories">
+              <label><input type="checkbox" data-gp-accessory><img src="{{ 'gomad-accessory-battery.png' | asset_url }}" alt=""><span><strong>Velotric Extra Battery Pack</strong><b>$549.99</b><select><option>GoMad / Standard / Black</option></select></span><i>›</i></label>
+              <label><input type="checkbox" data-gp-accessory><img src="{{ 'gomad-accessory-cover.png' | asset_url }}" alt=""><span><strong>Velotric Battery Cover Plate</strong><b>$45.99</b><select><option>GoMad / Sage</option><option>GoMad / Obsidian</option><option>GoMad / Dark Amber</option></select></span><i>›</i></label>
+              <label><input type="checkbox" data-gp-accessory><img src="{{ 'gomad-accessory-rack.png' | asset_url }}" alt=""><span><strong>Velotric Front Rack</strong><b>$79.99</b></span><i>›</i></label>
+              <footer><strong><span data-gp-selected>0</span> Selected</strong><button type="button">Show More</button></footer>
+            </div>
+            <div class="gp-accordions"><details><summary>▧ <b>What’s in the Box</b></summary><p>Bike, charger, battery, pedals, keys and assembly tools.</p></details><details><summary>▣ <b>Verify Discount</b></summary><p>Discount verification will be connected before launch.</p></details></div>
+            <div class="gp-quiz"><h3>Which Ebike is Right for Me?</h3><p>Take our 30-sec quiz for a personalized recommendation or compare top models.</p><div><button type="button">Take Quiz</button><button type="button">Compare Models</button></div></div>
+          </div>
         {% endform %}
       {% else %}
         <div class="gp-empty">Choose a product in the theme editor to display it here.</div>
@@ -125,21 +143,16 @@
   };
   root.querySelector('[data-gp-prev]')?.addEventListener('click', () => show(index - 1));
   root.querySelector('[data-gp-next]')?.addEventListener('click', () => show(index + 1));
-  let spinTimer;
-  root.querySelector('[data-gp-360]')?.addEventListener('click', (event) => {
-    if (slides.length < 2) return;
-    clearInterval(spinTimer);
-    event.currentTarget.classList.add('is-spinning');
-    let steps = 0;
-    spinTimer = setInterval(() => {
-      show(index + 1);
-      steps += 1;
-      if (steps >= slides.length) {
-        clearInterval(spinTimer);
-        event.currentTarget.classList.remove('is-spinning');
-      }
-    }, 180);
-  });
+  const spin = root.querySelector('[data-gp-spin]');
+  const frames = [...root.querySelectorAll('[data-gp-frame]')];
+  let frame = 0, dragging = false, startX = 0, startFrame = 0;
+  const showFrame = n => { frame = (n + frames.length) % frames.length; frames.forEach((img,i) => img.hidden = i !== frame); };
+  root.querySelector('[data-gp-360]')?.addEventListener('click', () => { if (spin) spin.hidden = false; });
+  root.querySelector('[data-gp-spin-close]')?.addEventListener('click', () => { spin.hidden = true; });
+  spin?.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; dragging=true; startX=e.clientX; startFrame=frame; spin.setPointerCapture(e.pointerId); });
+  spin?.addEventListener('pointermove', e => { if (dragging) showFrame(startFrame + Math.round((startX-e.clientX)/14)); });
+  spin?.addEventListener('pointerup', () => dragging=false);
+  spin?.addEventListener('pointercancel', () => dragging=false);
   root.querySelectorAll('.gp-option input').forEach(input => input.addEventListener('change', () => {
     const label = input.closest('fieldset')?.querySelector('[data-gp-option-label]');
     if (label) label.textContent = input.value;
@@ -161,6 +174,8 @@
     message.hidden = false;
     message.textContent = 'Test Ride is ready for your final booking link.';
   });
+  const count = root.querySelector('[data-gp-selected]');
+  root.querySelectorAll('[data-gp-accessory]').forEach(box => box.addEventListener('change', () => { if(count) count.textContent=root.querySelectorAll('[data-gp-accessory]:checked').length; }));
 })();
 </script>
 
